@@ -1,16 +1,18 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 /* CreateCoffeeDto */
 export class CreateCoffeeDto {
+  @ApiProperty({ description: 'The name of a coffee.' })
   @IsString()
   readonly name: string;
 
+  @ApiProperty({ description: 'The brand of a coffee.' })
   @IsString()
   readonly brand: string;
 
+  @ApiProperty({ description: 'The flavors of a coffee.' })
   @IsString({ each: true })
   readonly flavors: string[];
 }
 
 /* UpdateCoffeeDto */
-export class UpdateCoffeeDto extends PartialType(CreateCoffeeDto) {}
